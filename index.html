@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Example</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <h1 id="take-quiz-title">Take a quiz</h1>
+        <h3 id="select-mode-title">Mode:</h3>
+        <header class="mode-option-container">
+            <button class="mode-option-button" id="countdown-mode-button" onclick="selectMode('Countdown')">Countdown</button>
+            <button class="mode-option-button" id="practice-mode-button" onclick="selectMode('Practice')">Practice</button>
+        </header>
+
+        <section id="countdown-mode-container"> 
+            <h3 id="select-time-title">Time:</h3>
+            <div class="time-option-container">
+                <div class="first-time-options">
+                    <button class="first-option-button" onclick="selectTime('30s')">30s</button>
+                    <button class="first-option-button" onclick="selectTime('60s')">60s</button>
+                    <button class="first-option-button" onclick="selectTime('1m 30s')">1m 30s</button>
+                </div>
+                <div class="second-time-options">
+                    <button class="second-option-button" onclick="selectTime('2m')">2m</button>
+                    <button class="second-option-button" onclick="selectTime('5m')">5m</button>
+                    <button class="second-option-button" onclick="selectTime('10m')">10m</button>
+                </div>
+    
+                <h3 id="select-category-title">Filters:</h3>
+                <div class="categories-option-container">
+                    <div class="first-categories-options">
+                        <button class="category-button" onclick="selectCategory('Tech')">Tech</button>
+                        <button class="category-button" onclick="selectCategory('Business')">Business</button>
+                    </div>
+    
+                    <div class="second-categories-options">
+                        <button class="length-button" onclick="selectLength('3-letter')">3-letter</button>
+                        <button class="length-button" onclick="selectLength('4-letter')">4-letter</button>
+                        <button class="length-button" onclick="selectAll()">All</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+                <section id="practice-mode-container"> 
+            <h3 id="select-time-title">Questions:</h3>
+            <div class="time-option-container">
+                <div class="first-time-options">
+                    <button class="first-option-button" onclick="selectTime('5')">5</button>
+                    <button class="first-option-button" onclick="selectTime('10')">10</button>
+                    <button class="first-option-button" onclick="selectTime('15')">15</button>
+                </div>
+                <div class="second-time-options">
+                    <button class="second-option-button" onclick="selectTime('20')">20</button>
+                    <button class="second-option-button" onclick="selectTime('50')">50</button>
+                    <button class="second-option-button" onclick="selectTime('100')">100</button>
+                </div>
+    
+                <h3 id="select-category-title">Filters:</h3>
+                <div class="categories-option-container">
+                    <div class="first-categories-options">
+                        <button class="category-button" onclick="selectCategory('Tech')">Tech</button>
+                        <button class="category-button" onclick="selectCategory('Business')">Business</button>
+                    </div>
+    
+                    <div class="second-categories-options">
+                        <button class="length-button" onclick="selectLength('3-letter')">3-letter</button>
+                        <button class="length-button" onclick="selectLength('4-letter')">4-letter</button>
+                        <button class="length-button allButton" onclick="selectAll()">All</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="start-button-container">
+            <button id="start-button" onclick="validateAndStart()">Start</button>
+        </footer>
+
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>
