@@ -1,21 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const countdownModeContainer = document.getElementById(
-      "countdown-mode-container"
-    );
-    const practiceModeContainer = document.getElementById(
-      "practice-mode-container"
-    );
+    // Main variables
+    const countdownModeContainer = document.getElementById("countdown-mode-container");
+    const practiceModeContainer = document.getElementById("practice-mode-container");
     const countdownButton = document.getElementById("countdown-mode-button");
     const practiceButton = document.getElementById("practice-mode-button");
     const startButton = document.getElementById("start-button");
-    //cd variables
+    // CD variables
     const cdOptionButtons = document.querySelectorAll(".cd-option-button");
-    const cdCategoriesButtons = document.querySelectorAll(
-      ".cd-categories-button"
-    );
+    const cdCategoriesButtons = document.querySelectorAll(".cd-categories-button");
     const cdLengthButtons = document.querySelectorAll(".cd-length-button");
     const cdAllButton = document.getElementById("c-all-button");
-    //p variables
+    // P variables
     const pOptionButtons = document.querySelectorAll(".p-option-button");
     const pCategoriesButtons = document.querySelectorAll(".p-categories-button");
     const pLengthButtons = document.querySelectorAll(".p-length-button");
@@ -23,10 +18,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const backButton = document.getElementById("back-page-button");
     const minThirtyButton = document.getElementById("1m30s");
     const fifteenButton = document.getElementById("15");
-
-    
-
-   
+  
+    // Data variables
+    var arrayToDisplay = [];
+  var countdownSelectedOptions = {
+    option: [],
+    categories: [],
+    length: [],
+    all: false,
+  };
+  var practiceSelectedOptions = {
+    option: [],
+    categories: [],
+    length: [],
+    all: false,
+  };
   
     backButton.addEventListener("click", () => {
       console.log("clicked back button");
@@ -36,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
     countdownModeContainer.classList.add("hidden");
     practiceModeContainer.classList.add("hidden");
     startButton.classList.add("hidden");
-
   
     countdownButton.addEventListener("click", () => {
       countdownModeContainer.classList.remove("hidden");
@@ -44,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       countdownButton.classList.add("clicked");
       practiceButton.classList.remove("clicked");
       startButton.classList.remove("hidden");
+      arrayToDisaply = countdownSelectedOptions;
     });
   
     practiceButton.addEventListener("click", () => {
@@ -53,69 +59,90 @@ document.addEventListener("DOMContentLoaded", function () {
       practiceButton.classList.add("clicked");
       startButton.classList.remove("hidden");
     });
-
-
-
-// Helper function to remove 'clicked' class from a group of buttons
-function resetButtonGroup(buttons) {
-    buttons.forEach((button) => button.classList.remove("clicked"));
-  }
-
-  // Helper function to handle button click events
-  function handleButtonClick(button, buttons, allButton) {
-    if (allButton.classList.contains("clicked")) {
-      allButton.classList.remove("clicked");
+  
+    function resetButtonGroup(buttons) {
+      buttons.forEach((button) => button.classList.remove("clicked"));
     }
-    resetButtonGroup(buttons);
-    button.classList.add("clicked");
-    console.log("Selected:", button.innerText);
-  }
-
-  // Countdown mode buttons
+  
+    function handleButtonClick(
+        button,
+        buttons,
+        allButton,
+        selectedOptions,
+        section
+      ) {
+        if (allButton.classList.contains("clicked")) {
+          allButton.classList.remove("clicked");
+        }
+        resetButtonGroup(buttons);
+        button.classList.add("clicked");
+        console.log("Selected:", button.innerText);
+        selectedOptions[section] = [button.innerText];
+      }
+  
+  
+     // Countdown mode buttons
   cdOptionButtons.forEach((button) => {
-    button.addEventListener("click", () => handleButtonClick(button, cdOptionButtons, cdAllButton));
+    button.addEventListener("click", () =>
+      handleButtonClick(button, cdOptionButtons, cdAllButton, countdownSelectedOptions, 'option')
+    );
   });
 
   cdCategoriesButtons.forEach((button) => {
-    button.addEventListener("click", () => handleButtonClick(button, cdCategoriesButtons, cdAllButton));
+    button.addEventListener("click", () =>
+      handleButtonClick(button, cdCategoriesButtons, cdAllButton, countdownSelectedOptions, 'categories')
+    );
   });
 
   cdLengthButtons.forEach((button) => {
-    button.addEventListener("click", () => handleButtonClick(button, cdLengthButtons, cdAllButton));
+    button.addEventListener("click", () =>
+      handleButtonClick(button, cdLengthButtons, cdAllButton, countdownSelectedOptions, 'length')
+    );
   });
 
   cdAllButton.addEventListener("click", () => {
     resetButtonGroup(cdCategoriesButtons);
     resetButtonGroup(cdLengthButtons);
     cdAllButton.classList.add("clicked");
-    console.log("Selected: All");
+    countdownSelectedOptions.all = true;
   });
-
-
 
   // Practice mode buttons
   pOptionButtons.forEach((button) => {
-    button.addEventListener("click", () => handleButtonClick(button, pOptionButtons, pAllButton));
+    button.addEventListener("click", () =>
+      handleButtonClick(button, pOptionButtons, pAllButton, practiceSelectedOptions, 'option')
+    );
   });
 
   pCategoriesButtons.forEach((button) => {
-    button.addEventListener("click", () => handleButtonClick(button, pCategoriesButtons, pAllButton));
+    button.addEventListener("click", () =>
+      handleButtonClick(button, pCategoriesButtons, pAllButton, practiceSelectedOptions, 'categories')
+    );
   });
 
   pLengthButtons.forEach((button) => {
-    button.addEventListener("click", () => handleButtonClick(button, pLengthButtons, pAllButton));
+    button.addEventListener("click", () =>
+      handleButtonClick(button, pLengthButtons, pAllButton, practiceSelectedOptions, 'length')
+    );
   });
 
   pAllButton.addEventListener("click", () => {
     resetButtonGroup(pCategoriesButtons);
     resetButtonGroup(pLengthButtons);
     pAllButton.classList.add("clicked");
-    console.log("Selected: All");
+    practiceSelectedOptions.all = true;
   });
-
+  
+    // Simulate a click on the default buttons for Countdown and Practice modes
     minThirtyButton.click();
     fifteenButton.click();
     cdAllButton.click();
     pAllButton.click();
   
-});
+    startButton.addEventListener("click", () => {
+        console.log("clicked start button");
+        console.log("Countdown selected options =>", countdownSelectedOptions);
+        console.log("Practice selected options =>", practiceSelectedOptions);
+      });
+  });
+  
