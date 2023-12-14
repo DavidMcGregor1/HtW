@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const pLengthButtons = document.querySelectorAll(".p-length-button");
     const pAllButton = document.getElementById("p-all-button");
     const backButton = document.getElementById("back-page-button");
+    const minThirtyButton = document.getElementById("1m30s");
+    const fifteenButton = document.getElementById("15");
+
+    
+
+   
   
     backButton.addEventListener("click", () => {
       console.log("clicked back button");
@@ -47,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
       practiceButton.classList.add("clicked");
       startButton.classList.remove("hidden");
     });
+
+
 
 // Helper function to remove 'clicked' class from a group of buttons
 function resetButtonGroup(buttons) {
@@ -83,6 +91,8 @@ function resetButtonGroup(buttons) {
     console.log("Selected: All");
   });
 
+
+
   // Practice mode buttons
   pOptionButtons.forEach((button) => {
     button.addEventListener("click", () => handleButtonClick(button, pOptionButtons, pAllButton));
@@ -102,8 +112,10 @@ function resetButtonGroup(buttons) {
     pAllButton.classList.add("clicked");
     console.log("Selected: All");
   });
-  
-  
 
-
+    minThirtyButton.click();
+    fifteenButton.click();
+    cdAllButton.click();
+    pAllButton.click();
+  
 });
