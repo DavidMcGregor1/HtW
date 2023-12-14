@@ -1,0 +1,737 @@
+ /* ---------- MAIN ---------- */
+
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #1C1A5E;
+  }
+  
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+
+  header {
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  h1 {
+    margin: 0;
+    flex-grow: 1; /* Take up available space to push the h1 to the center */
+    text-align: center; /* Center the text within the available space */
+  }
+
+  .back-button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: white;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  /* ---------- ACRONYMS TABLE ---------- */
+  
+  #acronym-meanings-title {
+    text-align: center;
+    color: white;
+  }
+  
+  #acronym-table {
+    margin: 20px 2%;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  #acronym-table th, #acronym-table td {
+    padding: 10px 20px;
+    text-align: left;
+  }
+
+  #acronym-table tbody tr.hidden-row {
+    display: none;
+  }
+  
+  #acronym-table th {
+    background-color: #071D49;
+    color: white;
+    font-weight:bold;
+    font-size: 1.5rem;
+    border-radius: 0%;
+  }
+  
+  #acronym-table tr:nth-child(even) {
+    background-color: #EFEFEF;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  #acronym-table tr:nth-child(odd) {
+    background-color: #01DEB2;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  #acronym-table th:last-child, #acronym-table td:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  #acronym-table th, #acronym-table td {
+    padding: 10px 20px;
+    text-align: left;
+    border-right: 5px solid #1C1A5E;
+  }
+  
+  #acronym-table th:last-child, #acronym-table td:last-child {
+    border-right: none;
+  }
+  
+  #acronym-table th, #acronym-table td {
+    padding: 10px 20px;
+    border-right: 5px solid #1C1A5E;
+    border-bottom: 5px solid #1C1A5E;
+  }
+  
+  #acronym-table th:last-child, #acronym-table td:last-child {
+    border-right: none;
+  }
+  
+  #acronym-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  #acronym-table tr td:first-child {
+    text-align: center;
+  }
+  
+  #acronym-table tr td:last-child {
+    text-align: left;
+  }
+  
+  #like-button {
+      background-color: #EFEFEF;
+  border: none;
+  padding: 10px 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 4px;
+  }
+  
+  .table-container {
+    margin-left: 10%;
+    grid-column: 1;
+    height: 650px;
+    width: 900px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+  .table-container table {
+    margin: 0;
+  }
+  
+  .table-container table {
+    width: 100%;
+  }
+
+  .meaning-header-with-add-btn {
+    text-align: left;
+    display: flex;
+    background-color: #01DEB2;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #add-btn {
+    float: right;
+    margin-left: 10px;
+    width: 80px;
+    height: 25px;
+    border: none;
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    margin-right: 5%;
+  }
+
+  #add-btn:hover {
+    background-color: #01DEB2;
+    cursor: pointer;
+  }
+
+
+  /* ---------- FILTER BY SECTION ---------- */
+  
+  #filter-by-text {
+    color: white;
+  }
+  
+  .filter-section {
+    margin-left: 5%;
+    display: flex;
+    margin-bottom: 2%;
+    justify-content: space-around;
+    width: 800px;
+  }
+  
+  .select-option {
+    margin-top: 3%;
+    height: 20px;
+    width: 100px;
+  }
+  
+  .filter-option-container {
+    display: flex;
+    list-style: 28px;
+    align-items: center;
+    position: relative;
+    max-width: 190px;
+  }
+  
+  #all-button:hover {
+    cursor: pointer;
+    background-color: #01DEB2;
+    border: 1px solid black;
+  }
+  
+  .search-container {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+  }
+  
+  .search-input {
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  width: 100%;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #EFEFEF;
+  color: #0d0c22;
+  transition: .3s ease;
+  }
+  
+  .search-input::placeholder {
+  color: #777;
+  }
+  
+  .search-icon {
+  position: absolute;
+  left: 1rem;
+  fill: #777;
+  width: 1rem;
+  height: 1rem;
+  }
+  
+  
+  /* ---------- DESCRIPTION SECTION ---------- */
+  
+  #description {
+    height: 600px;
+    width: 400px;
+    background-color: #071D49;
+    grid-column: 2 /3; /*here*/
+    margin-left: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .small-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+  
+  #meaning-of-chosen-acronym {
+    color: white;
+    text-align: center;
+  }
+  
+  #description-text-div {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  
+  #description-text {
+    color: white;
+    line-height: 1.7rem;
+    font-size: 1.5rem;
+    padding: 5%;
+    margin-bottom: 20%;
+  }
+
+  
+  /* ---------- DESCRIPTION BOTTOM BAR ---------- */
+  
+  label {
+  font-size: 5em;
+  color: red;
+  }
+  
+  .bottom-button {
+  cursor: pointer;
+  border: none;
+  }
+  
+  .edit-button {
+  font-size: 1.5rem;
+  }
+  
+  .next-button {
+  background-color: #EFEFEF;
+  border: none;
+  color: black;
+  padding: 10px 15px;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 4px;
+  }
+  
+  .bottom-bar {
+  width: 100%;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  }
+  
+  .heart-button {
+  width: 40px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 40px;
+  }
+  
+  .acronym-cell.highlighted,
+  .acronym-cell.highlighted + td {
+    background-color: #0A70DC;
+  }
+  
+  .highlighted {
+    background-color: #0A70DC !important;
+  }
+
+  #add-acronym-container {
+    height: 600px;
+    width: 400px;
+    background-color: #071D49;
+    grid-column: 2 /3;
+    margin-left: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2%;
+  }
+
+  #add-new-acronym-title {
+    color: white;
+    text-align: center;
+  }
+
+  .new-acronym-labels {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  #new-acronym-letters {
+    width: 30%;
+    margin-bottom: 2%;
+  }
+
+  #new-acronym-meaning {
+    width: 50%;
+    margin-bottom: 2%;
+  }
+
+  .A-M-C-Options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #new-acronym-category {
+    width: 40%;
+  }
+
+  #new-acronym-description {
+    width: 80%;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #new-acronym-letters {
+    text-transform: uppercase;
+  }
+
+  #new-acronym-form {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .new-acronym-description-container {
+    padding: 5%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #new-description-label {
+    margin-left: 10%;
+  }
+  
+  .new-acronym-bottom-bar {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    }
+
+
+  /* ---------- ADDED ACRONYM ---------- */
+
+  #added-acronym-waiting-container {
+    height: 600px;
+    width: 400px;
+    background-color: #071D49;
+    grid-column: 2 /3;
+    margin-left: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  #acronym-added-message {
+    color: white;
+    margin-top: 10%;
+    font-size: 30px;
+  }
+
+  .main-thankyou {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .acronym-added-container {
+    width: 250px;
+    height: 100px;
+  }
+
+  #tick {
+    font-size: 70px;
+  }
+
+  #thank-you-message {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  
+  /* ---------- EDIT DESCRIPTION SECTION ---------- */
+  
+  .noneClass {
+    display: none !important;
+  }
+  
+  .new-description-text-div {
+    display: flex;
+    justify-content: center;
+    height: 50%;
+  }
+  
+  #newDescription {
+    width: 90%;
+    height: 80%;
+  }
+  
+  #edit-description {
+    display: none;
+  }
+  
+  #edit-description {
+    height: 600px;
+    width: 400px;
+    background-color: #071D49;
+    grid-column: 2 /3;
+    margin-left: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  #description-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 10%;
+  }
+  
+  #meaning-of-chosen-acronym {
+    color: white;
+    text-align: center;
+  }
+  
+  #edit-meaning-of-chosen-acronym {
+    color: white;
+    text-align: center;
+  }
+  
+  .description-text-div {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  
+  #description-text {
+    color: white;
+    line-height: 1.7rem;
+    font-size: 1.5rem;
+    padding: 5%;
+    margin-bottom: 20%;
+  }
+  
+
+  /* ---------- DESCRIPTION BOTTOM BAR ---------- */
+   
+  .bottom-button {
+    cursor: pointer;
+    border: none;
+  }
+  
+  .edit-description-bottom-bar {
+    margin-bottom: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  #cancel-description-button {
+    width: 120px;
+    height: 50px;
+    background-color: #C63018;
+    border-radius: 40px;
+    border: none;
+    font-weight: bold;
+    color: white;
+  }
+
+  #cancel-description-button:hover {
+    cursor: pointer;
+    background-color: #a02512;
+  }
+  
+  #submit-description-button {
+    width: 120px;
+    height: 50px;
+    background-color: #01DEB2;
+    border-radius: 40px;
+    border: none;
+    font-weight: bold;
+  }
+
+  #submit-new-acronym-button {
+    width: 120px;
+    height: 50px;
+    background-color: #01DEB2;
+    border-radius: 40px;
+    border: none;
+    font-weight: bold;
+    }
+
+  #submit-new-acronym-button:hover {
+    cursor: pointer;
+    background-color: #07bf9a;
+  }
+
+  #submit-description-button:hover {
+    cursor: pointer;
+    background-color: #07bf9a;
+  }
+  
+  .acronym-cell.highlighted,
+  .acronym-cell.highlighted + td {
+    background-color: #0A70DC; /* Bright pink highlight color */
+  }
+  
+  .highlighted {
+    background-color: #0A70DC !important; /* Bright pink highlight color */
+  }
+  
+
+  /* ---------- MEDIA QUERIES ---------- */
+  
+  @media screen and (max-width: 1500px) {
+    .table-container {
+      width: 800px;
+      height: 550px;
+    }
+    
+    #description {
+      height: 550px;
+      width: 400px;
+    }
+    }
+    
+    @media screen and (max-width: 1390px) {
+    .table-container {
+      width: 700px;
+    }
+    }
+    
+    @media screen and (max-width: 1283px) {
+    .table-container {
+      width: 600px;
+    }
+    }
+    
+    @media screen and (max-width: 1185px) {
+    .table-container {
+      width: 500px;
+    }
+    }
+    
+    @media screen and (max-width: 1075px) {
+    .table-container {
+      width: 400px;
+    }
+    #description {
+      margin-left: 20%;
+    }
+    }
+    
+    @media screen and (max-width: 985px) {
+    .table-container {
+      width: 350px;
+    }
+    }
+    
+    @media screen and (max-width: 930px) {
+    
+    .main-container {
+      grid-template-columns: 1fr 1fr; 
+    }
+    
+    #description {
+      height: 550px;
+      width: 400px;
+      background-color: #071D49;
+      margin-left: 0%;
+      margin-right: 30%;
+      grid-column: 2 /3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    }
+    
+    @media screen and (max-width: 880px) {
+    
+    .main-container {
+      grid-template-columns: 1fr 1fr; 
+    }
+    
+    #description {
+      height: 550px;
+      width: 350px;
+      background-color: #071D49;
+      margin-left: 0%;
+      grid-column: 2 /3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    }
+    
+    @media screen and (max-width: 830px) {
+    
+    #meaning-of-chosen-acronym {
+      text-align: center;
+      font-size: medium;
+    }
+    
+    #description-text {
+      font-size: 0.9rem;
+    }
+    
+    #description {
+      height: 500px;
+      width: 300px;
+      background-color: #071D49;
+      margin-left: 0%;
+      grid-column: 2 /3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .table-container {
+    height: 535px;
+    width: 300px;
+    }
+    
+    }
+    
+    @media screen and (max-width: 700px) {
+    .main-container {
+      grid-template-columns: 1fr; 
+    }
+    
+    #description {
+      grid-column: 1;
+      width: 100%;
+      margin-left: 0;
+      margin-top: 10px;
+    }
+    
+    .table-container {
+      margin-left: 0;
+      width: 100%; 
+    }
+    
+    .filter-section {
+      margin-left: 0%;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .select-option {
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    
+    #filter-by-text {
+      text-align: center;
+    }
+    }
