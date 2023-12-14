@@ -8,16 +8,14 @@ body {
     justify-content: center;
 }
 
-.hidden {
-    display: none !important;
-}
-
 button:hover {
     background-color: #01DEB2;
     cursor: pointer;
 }
 
 /* ---------- TITLES ---------- */
+
+
 
 #take-quiz-title {
     text-align: center;
@@ -42,8 +40,31 @@ button:hover {
     color: white;
 }
 
+/* .selected {
+    background-color: orange;
+} */
+
+.hidden {
+    display: none;
+}
+
+.clicked {
+    background-color: #01DEB2;
+}
+
+
+.start-button-container {
+    text-align: center;
+}
+
+.category-button.clicked, .length-button.clicked {
+    background-color: purple; /* Orange color */
+}
+
+
 
 /* ---------- MODE OPTIONS ---------- */
+
 
 .mode-option-container {
     text-align: center;
@@ -73,7 +94,7 @@ button:hover {
     gap: 30px;
 }
 
-.first-option-button {
+.cd-option-button, .p-option-button {
     width: 80px;
     height: 40px;
     border-radius: 40px;
@@ -94,20 +115,15 @@ button:hover {
     border: none;
 }
 
-.first-categories-button {
+.cd-categories-button, .p-categories-button, .cd-length-button, .p-length-button {
     width: 180px;
     height: 40px;
     border-radius: 40px;
     border: none;
+    margin-bottom: 1%;
+
 }
 
-.second-categories-button {
-    margin-top: 1%;
-    width: 180px;
-    height: 40px;
-    border-radius: 40px;
-    border: none;
-}
 
 .first-categories-options {
     display: flex;
@@ -115,28 +131,11 @@ button:hover {
     gap: 20px;
 }
 
-.category-button, .length-button {
- margin-top: 1%;
-    width: 180px;
-    height: 40px;
-    border-radius: 40px;
-    border: none;
-}
 
-.category-button:hover, .length-button:hover, .first-option-button:hover, .mode-option-button:hover, .second-option-button:hover {
-    background-color: #01DEB2;
-}
-
-.category-button.clicked, .length-button.clicked, .first-option-button.clicked, .second-option-button.clicked, .mode-option-button.clicked, .allButton.clicked {
-    background-color: #01DEB2; 
-}
-
-
-/* ---------- START BUTTON ---------- */
-
-
-.start-button-container {
-    text-align: center;
+.second-categories-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 #start-button {
@@ -150,8 +149,15 @@ button:hover {
     color: black;
 }
 
-#start-button:hover {
-    background-color: #07bf9a;
+/* ---------- ERROR POPUP ---------- */
+
+#cd-error-popup, #p-error-popup {
+    text-align: center;
+    color: red;
+}
+
+#cd-error-message, #p-error-message {
+    font-size: 1.2rem;
 }
 
 /* ---------- MEDIA QUERIES ---------- */
