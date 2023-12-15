@@ -96,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
       })
     })
 
-    
 
     cdLengthButtons.forEach((button) => {
       button.addEventListener("click", () => {
